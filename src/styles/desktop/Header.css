@@ -1,0 +1,63 @@
+.header {
+  width: 100%;
+  height: 40px;
+  background-color: #edcce9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-icon {
+  width: 24px;
+  height: 24px;
+  color: #241a21;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.header-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #241a21;
+  font-weight: 400;
+}
+
+.header-link-selected {
+  cursor: pointer;
+  text-decoration: none;
+  color: #241a21;
+  font-weight: 700;
+}
+
+.header-configs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.icon-config {
+  color: #261f24;
+  width: 21px;
+  height: 21px;
+}
+
+.header-hour {
+  padding: 0 10px;
+  font-weight: 500;
+  color: #241a21;
+}
