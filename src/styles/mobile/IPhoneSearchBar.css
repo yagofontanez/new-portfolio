@@ -1,0 +1,21 @@
+.iphone-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.iphone-search-icon {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.iphone-search-text {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+}

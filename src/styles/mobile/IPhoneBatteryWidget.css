@@ -1,0 +1,81 @@
+.iphone-battery-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.iphone-battery-widget-inner {
+  width: 100%;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.iphone-battery-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iphone-battery-ring-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.iphone-battery-ring {
+  width: 80px;
+  height: 80px;
+}
+
+.iphone-battery-ring-bg {
+  stroke: rgba(255, 255, 255, 0.15);
+}
+
+.iphone-battery-ring-fill {
+  stroke: #30d158;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.iphone-battery-phone-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.iphone-battery-percent {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.iphone-battery-devices {
+  display: flex;
+  gap: 12px;
+}
+
+.iphone-battery-device-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+.iphone-battery-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}

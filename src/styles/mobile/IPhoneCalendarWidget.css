@@ -1,0 +1,49 @@
+.iphone-calendar-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.iphone-calendar-widget-inner {
+  width: 100%;
+  min-height: 200px;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.iphone-calendar-header {
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+.iphone-calendar-weekday {
+  color: #ff3b30;
+  font-weight: 500;
+}
+
+.iphone-calendar-month {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+.iphone-calendar-day {
+  font-size: 48px;
+  font-weight: 200;
+  color: #fff;
+  line-height: 1;
+}
+
+.iphone-calendar-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}

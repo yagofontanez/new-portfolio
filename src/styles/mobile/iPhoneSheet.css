@@ -1,0 +1,92 @@
+.iphone-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  animation: iphone-sheet-overlay-in 0.3s ease-out;
+}
+
+@keyframes iphone-sheet-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.iphone-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 90vh;
+  background: #f2f2f7;
+  border-radius: 20px 20px 0 0;
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  animation: iphone-sheet-in 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@keyframes iphone-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.iphone-sheet-handle {
+  width: 36px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  margin: 8px auto 4px;
+}
+
+.iphone-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px 12px;
+  min-height: 44px;
+}
+
+.iphone-sheet-close {
+  background: none;
+  border: none;
+  color: #007AFF;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 8px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.iphone-sheet-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+  color: #1d1d1f;
+}
+
+.iphone-sheet-spacer {
+  width: 70px;
+}
+
+.iphone-sheet-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 24px;
+  -webkit-overflow-scrolling: touch;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+}
+
+.iphone-sheet-content * {
+  max-width: 100%;
+}
