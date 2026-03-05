@@ -15,7 +15,7 @@ const IPhoneBatteryWidget = () => {
     }
   }, []);
 
-  const circumference = 2 * Math.PI * 45;
+  const circumference = 2 * Math.PI * 42;
   const strokeDashoffset = circumference - (battery / 100) * circumference;
 
   return (
@@ -24,21 +24,21 @@ const IPhoneBatteryWidget = () => {
         <div className="iphone-battery-main">
           <div className="iphone-battery-ring-wrap">
             <svg className="iphone-battery-ring" viewBox="0 0 100 100">
-              <circle
-                className="iphone-battery-ring-bg"
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                strokeWidth="6"
-              />
-              <circle
-                className="iphone-battery-ring-fill"
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                strokeWidth="6"
+            <circle
+              className="iphone-battery-ring-bg"
+              cx="50"
+              cy="50"
+              r="42"
+              fill="none"
+              strokeWidth="5"
+            />
+            <circle
+              className="iphone-battery-ring-fill"
+              cx="50"
+              cy="50"
+              r="42"
+              fill="none"
+              strokeWidth="5"
                 strokeDasharray={circumference}
                 strokeDashoffset={strokeDashoffset}
                 transform="rotate(-90 50 50)"
