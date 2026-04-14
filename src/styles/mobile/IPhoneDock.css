@@ -1,0 +1,55 @@
+.iphone-dock {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: saturate(200%) blur(30px);
+  -webkit-backdrop-filter: saturate(200%) blur(30px);
+  border-radius: 28px;
+  border: 0.5px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+.iphone-dock-app {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.12s ease;
+}
+
+.iphone-dock-app:active {
+  transform: scale(0.92);
+}
+
+.dock-whatsapp {
+  background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);
+}
+
+.dock-mail {
+  background: linear-gradient(135deg, #4facfe 0%, #1e7ce8 100%);
+}
+
+.dock-safari {
+  background: radial-gradient(circle at 30% 30%, #77b9ff, #0a66c2 70%);
+  color: #fff;
+}
+
+.dock-linkedin {
+  background: linear-gradient(135deg, #2196f3 0%, #0a66c2 100%);
+}

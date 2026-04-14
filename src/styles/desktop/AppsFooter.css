@@ -1,60 +1,125 @@
-.apps-footer {
+.apps-footer-wrap {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 75%;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 0 10px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.apps-footer {
+  pointer-events: auto;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.24);
+  backdrop-filter: saturate(200%) blur(30px);
+  -webkit-backdrop-filter: saturate(200%) blur(30px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  gap: 10px;
-  padding: 10px;
+  gap: 6px;
+  padding: 6px 10px;
 }
 
 .apps-footer-item {
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   background-size: cover;
   background-position: center;
-}
-
-.apps-footer-item:hover {
-  transform: scale(1.5) translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.app-footer-line {
-  height: 100%;
-  outline: none;
-  border: 1px solid #7c18c45e;
-}
-
-.apps-footer-left {
-  width: 90%;
-  display: flex;
-  align-items: center;
-  z-index: 1000;
-  gap: 10px;
-  padding: 10px;
-}
-
-.apps-footer-right {
-  width: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  gap: 10px;
-  padding: 10px;
+  overflow: hidden;
+}
+
+.apps-footer-item.dock-project {
+  overflow: visible;
+}
+
+.apps-footer-item.dock-project .project-art-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.apps-footer-item:hover {
+  transform: translateY(-14px) scale(1.25);
+}
+
+.dock-indicator {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.app-footer-line {
+  width: 1px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.35);
+  margin: 0 6px;
+}
+
+.apps-footer-left,
+.apps-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dock-notes {
+  background: linear-gradient(180deg, #fff8d5 0%, #ffd25a 100%);
+  position: relative;
+}
+
+.dock-notes-pad {
+  width: 32px;
+  height: 36px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.dock-notes-pad::before,
+.dock-notes-pad::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  height: 2px;
+  background: #d1b25c;
+  border-radius: 1px;
+}
+
+.dock-notes-pad::before {
+  top: 8px;
+}
+
+.dock-notes-pad::after {
+  top: 16px;
+  right: 12px;
+}
+
+.dock-trash {
+  background: linear-gradient(135deg, #d0d0d5 0%, #8a8a92 100%);
+  color: rgba(30, 30, 35, 0.85);
+  font-size: 22px;
 }

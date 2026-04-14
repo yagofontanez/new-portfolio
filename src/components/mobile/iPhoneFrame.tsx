@@ -7,8 +7,9 @@ interface IPhoneFrameProps {
 const IPhoneFrame: React.FC<IPhoneFrameProps> = ({ children }) => {
   return (
     <div className="iphone-frame">
-      <div className="iphone-notch" />
+      <div className="iphone-dynamic-island" />
       <div className="iphone-screen">{children}</div>
+      <div className="iphone-home-indicator" />
     </div>
   );
 };

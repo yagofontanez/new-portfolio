@@ -1,10 +1,12 @@
 import type { SetStateAction } from "react";
 
+import type { ProjectId } from "../components/shared/ProjectArt";
+
 export interface Project {
   title: string;
   description: string;
   link: string;
-  image: string;
+  art: ProjectId;
 }
 
 export interface AppsFooterProps {

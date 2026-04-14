@@ -8,26 +8,76 @@
   flex-direction: column;
 }
 
-.iphone-notch {
+.iphone-dynamic-island {
   position: absolute;
-  top: 0px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 30px;
+  width: 118px;
+  height: 34px;
   background: #000;
-  border-radius: 0 0 20px 20px;
+  border-radius: 20px;
   z-index: 100;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .iphone-screen {
   width: 100%;
   flex: 1;
   min-height: 0;
-  background: url("../../assets/bgd-mobile-portifolio.png") no-repeat center center;
-  background-size: cover;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  background: url("../../assets/bgd-mobile-portifolio.png") no-repeat center center;
+  background-size: cover;
+}
+
+.iphone-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      rgba(80, 140, 255, 0.25) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 100% 100%,
+      rgba(170, 80, 220, 0.28) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 0% 100%,
+      rgba(255, 120, 80, 0.15) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.2) 80%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.iphone-screen > * {
+  position: relative;
+  z-index: 2;
+}
+
+.iphone-home-indicator {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 134px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 3px;
+  z-index: 200;
+  pointer-events: none;
 }

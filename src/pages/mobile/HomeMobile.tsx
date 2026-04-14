@@ -1,59 +1,80 @@
 import { useState } from "react";
 import IPhoneFrame from "../../components/mobile/iPhoneFrame";
 import IPhoneStatusBar from "../../components/mobile/iPhoneStatusBar";
-import IPhoneBatteryWidget from "../../components/mobile/IPhoneBatteryWidget";
 import IPhoneCalendarWidget from "../../components/mobile/IPhoneCalendarWidget";
 import IPhoneFolderWidget from "../../components/mobile/IPhoneFolderWidget";
 import IPhoneFeaturedWidget from "../../components/mobile/IPhoneFeaturedWidget";
-import IPhoneSearchBar from "../../components/mobile/IPhoneSearchBar";
 import IPhoneSheet from "../../components/mobile/iPhoneSheet";
+import IPhoneAppTile from "../../components/mobile/IPhoneAppTile";
+import IPhonePageDots from "../../components/mobile/IPhonePageDots";
+import IPhoneWeatherWidget from "../../components/mobile/IPhoneWeatherWidget";
+import ProjectArt from "../../components/shared/ProjectArt";
 import {
   FaBriefcase,
   FaUser,
   FaEnvelope,
   FaGithub,
   FaLinkedin,
-  FaFolderOpen,
-  FaCode,
-  FaShareAlt,
+  FaWhatsapp,
+  FaReact,
+  FaNodeJs,
+  FaAws,
+  FaPalette,
+  FaGraduationCap,
+  FaLanguage,
+  FaSafari,
 } from "react-icons/fa";
-import img1 from "../../assets/project1.jpg";
-import img2 from "../../assets/project2.jpg";
-import img3 from "../../assets/project3.jpg";
-import img4 from "../../assets/project4.jpg";
 import { notesData } from "../../mock";
 import type { Project } from "../../interfaces/interfaces";
 import "./../../styles/mobile/HomeMobile.css";
 import "./../../styles/desktop/mock.css";
 
-const projects: Project[] = [
+type MobileProject = Project & {
+  subtitle: string;
+  tags: string[];
+  status?: { label: string; color: string };
+};
+
+const projects: MobileProject[] = [
+  {
+    title: "UpStat",
+    subtitle: "SaaS · Monitoramento de Uptime",
+    description:
+      "Desenvolvido do zero, em produção com usuários pagantes. Ecossistema com SDK npm, CLI em Go, Flutter SDK, MCP Server, Chrome Extension e AI Copilot. Pagamentos BR (Asaas + PIX) e CPF/CNPJ criptografado com AES-256-GCM.",
+    link: "https://upstat.online",
+    art: "upstat",
+    tags: ["Node.js", "React", "PostgreSQL", "Go", "Flutter"],
+    status: { label: "Em produção", color: "#22c55e" },
+  },
+  {
+    title: "Pingoo",
+    subtitle: "Mensageria WhatsApp",
+    description:
+      "Plataforma com UI glassmorphism e módulos de Templates, Integrações, Relatórios e Configurações. Pensada para gerenciar campanhas e fluxos de atendimento em escala.",
+    link: "https://github.com/yagofontanez/pingoo-backend",
+    art: "pingoo",
+    tags: ["React", "TypeScript", "Spring Boot", "Tailwind"],
+    status: { label: "Open Source", color: "#818cf8" },
+  },
   {
     title: "Martins Adviser",
+    subtitle: "CRM Multicanal",
     description:
-      "Martins Adviser é um sistema completo tipo CRM, projetado para gerenciar e automatizar o envio de mensagens em múltiplos canais. Desenvolvido com React e Laravel + Node.js.",
+      "CRM completo para gestão e automação de mensagens em e-mail, WhatsApp e SMS. Infraestrutura combinando AWS, Contabo e Railway. Twilio + Evolution API para envio programado.",
     link: "https://martinsadviser.com/",
-    image: img1,
+    art: "martins",
+    tags: ["React", "Laravel", "Node.js", "AWS", "Twilio"],
+    status: { label: "Live", color: "#0ea5e9" },
   },
   {
-    title: "To-Do List",
+    title: "TCC · Benchmarking de Backends",
+    subtitle: "Pesquisa Acadêmica · ITE Bauru",
     description:
-      "Aplicação para gerenciamento de tarefas com HTML, CSS e JavaScript. LocalStorage para persistência.",
-    link: "https://to-do-list-yago.netlify.app/",
-    image: img2,
-  },
-  {
-    title: "Dashdark X",
-    description:
-      "Simulação de dashboard moderno com foco em design elegante, feito com HTML, CSS e JavaScript.",
-    link: "https://dashdark.netlify.app/",
-    image: img3,
-  },
-  {
-    title: "Windows Simulator",
-    description:
-      "Portfólio interativo que simula interface Windows. React, Styled Components e i18n.",
-    link: "https://yagofontanezcurriculo.netlify.app/",
-    image: img4,
+      "Pesquisa comparativa de performance entre Node.js, FastAPI e Laravel para mensageria automatizada via Twilio. Laravel liderou com 0,561s de latência média.",
+    link: "https://repositorios-tcc.netlify.app/",
+    art: "tcc",
+    tags: ["Node.js", "FastAPI", "Laravel", "Twilio"],
+    status: { label: "★ Nota máxima", color: "#fbbf24" },
   },
 ];
 
@@ -62,6 +83,7 @@ const HomeMobile = () => {
 
   const openSheet = (title: string) => setSheetOpen(title);
   const closeSheet = () => setSheetOpen(null);
+  const openExternal = (url: string) => window.open(url, "_blank");
 
   const getContent = (title: string) => {
     const note = notesData.find((n) => n.title === title);
@@ -74,99 +96,132 @@ const HomeMobile = () => {
         <IPhoneStatusBar />
         <div className="iphone-home">
           <div className="iphone-widgets">
-            <IPhoneBatteryWidget />
-
-            <div className="iphone-widgets-grid">
-              <div className="iphone-widgets-folders">
+            <div className="iphone-grid-row">
+              <div className="iphone-mini-grid">
                 <IPhoneFolderWidget
-                  label="Redes Sociais"
-                  badge={8}
-                  icons={[
-                    <FaLinkedin />,
-                    <FaGithub />,
-                    <FaShareAlt />,
-                    <FaEnvelope />,
+                  label="Contato"
+                  badge={5}
+                  tiles={[
+                    {
+                      icon: <FaEnvelope />,
+                      bg: "linear-gradient(135deg, #4facfe 0%, #1e7ce8 100%)",
+                    },
+                    {
+                      icon: <FaWhatsapp />,
+                      bg: "linear-gradient(135deg, #4ade80 0%, #16a34a 100%)",
+                    },
+                    {
+                      icon: <FaLinkedin />,
+                      bg: "linear-gradient(135deg, #2196f3 0%, #0a66c2 100%)",
+                    },
+                    {
+                      icon: <FaGithub />,
+                      bg: "linear-gradient(135deg, #4a4a4a 0%, #1d1d1f 100%)",
+                    },
                   ]}
                   onClick={() => openSheet("Contato")}
                 />
                 <IPhoneFolderWidget
-                  label="Importantes"
+                  label="Sobre Mim"
                   badge={4}
-                  icons={[
-                    <FaUser />,
-                    <FaBriefcase />,
-                    <FaEnvelope />,
-                    <FaFolderOpen />,
+                  tiles={[
+                    {
+                      icon: <FaUser />,
+                      bg: "linear-gradient(135deg, #ffd86b 0%, #ff9500 100%)",
+                    },
+                    {
+                      icon: <FaGraduationCap />,
+                      bg: "linear-gradient(135deg, #67e8f9 0%, #0891b2 100%)",
+                    },
+                    {
+                      icon: <FaPalette />,
+                      bg: "linear-gradient(135deg, #f0abfc 0%, #af52de 100%)",
+                    },
+                    {
+                      icon: <FaLanguage />,
+                      bg: "linear-gradient(135deg, #fb7185 0%, #d93025 100%)",
+                    },
                   ]}
                   onClick={() => openSheet("Sobre Mim")}
                 />
+                <IPhoneAppTile
+                  label="WhatsApp"
+                  icon={<FaWhatsapp />}
+                  bg="linear-gradient(135deg, #4ade80 0%, #16a34a 100%)"
+                  onClick={() => openExternal("https://wa.me/5514982258397")}
+                />
+                <IPhoneAppTile
+                  label="Mail"
+                  icon={<FaEnvelope />}
+                  bg="linear-gradient(135deg, #4facfe 0%, #1e7ce8 100%)"
+                  onClick={() => openSheet("Contato")}
+                />
+              </div>
+              <div className="iphone-big-widget">
+                <IPhoneWeatherWidget />
+              </div>
+            </div>
+
+            <div className="iphone-grid-row">
+              <div className="iphone-mini-grid">
                 <IPhoneFolderWidget
                   label="Projetos"
                   badge={projects.length}
-                  icons={[
-                    <div
-                      key="1"
-                      style={{
-                        backgroundImage: `url(${img1})`,
-                        width: "100%",
-                        height: "100%",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    />,
-                    <div
-                      key="2"
-                      style={{
-                        backgroundImage: `url(${img2})`,
-                        width: "100%",
-                        height: "100%",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    />,
-                    <div
-                      key="3"
-                      style={{
-                        backgroundImage: `url(${img3})`,
-                        width: "100%",
-                        height: "100%",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    />,
-                    <div
-                      key="4"
-                      style={{
-                        backgroundImage: `url(${img4})`,
-                        width: "100%",
-                        height: "100%",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    />,
-                  ]}
+                  tiles={projects.map((p) => ({
+                    icon: <ProjectArt id={p.art} />,
+                  }))}
                   onClick={() => openSheet("Projetos")}
                 />
                 <IPhoneFolderWidget
-                  label="Dev"
-                  badge={22}
-                  icons={[
-                    <FaGithub />,
-                    <FaCode />,
-                    <FaBriefcase />,
-                    <FaLinkedin />,
+                  label="Experiências"
+                  badge={3}
+                  tiles={[
+                    {
+                      icon: <FaBriefcase />,
+                      bg: "linear-gradient(135deg, #818cf8 0%, #4f46e5 100%)",
+                    },
+                    {
+                      icon: <FaReact />,
+                      bg: "linear-gradient(135deg, #67e8f9 0%, #0ea5e9 100%)",
+                    },
+                    {
+                      icon: <FaNodeJs />,
+                      bg: "linear-gradient(135deg, #86efac 0%, #16a34a 100%)",
+                    },
+                    {
+                      icon: <FaAws />,
+                      bg: "linear-gradient(135deg, #fbbf24 0%, #ea580c 100%)",
+                    },
                   ]}
                   onClick={() => openSheet("Experiências")}
                 />
+                <IPhoneAppTile
+                  label="Safari"
+                  icon={<FaSafari />}
+                  bg="radial-gradient(circle at 30% 30%, #77b9ff, #0a66c2 70%)"
+                  onClick={() =>
+                    openExternal("https://yagof-dev.netlify.app")
+                  }
+                />
+                <IPhoneAppTile
+                  label="LinkedIn"
+                  icon={<FaLinkedin />}
+                  bg="linear-gradient(135deg, #2196f3 0%, #0a66c2 100%)"
+                  onClick={() =>
+                    openExternal("https://linkedin.com/in/yagofontanez")
+                  }
+                />
               </div>
-              <div className="iphone-widgets-calendar">
+              <div className="iphone-big-widget">
                 <IPhoneCalendarWidget />
               </div>
             </div>
 
             <IPhoneFeaturedWidget onClick={() => openSheet("Projetos")} />
 
-            <IPhoneSearchBar />
+            <div className="iphone-bottom-stack">
+              <IPhonePageDots total={2} active={0} />
+            </div>
           </div>
         </div>
       </IPhoneFrame>
@@ -177,16 +232,7 @@ const HomeMobile = () => {
           isOpen={!!sheetOpen}
           onClose={closeSheet}
         >
-          {sheetOpen === "Página Inicial" ? (
-            <div className="sobre-mim">
-              <p>
-                Olá! Sou Yago Fontanez, desenvolvedor full stack. Explore as
-                pastas e widgets para conhecer meu trabalho.
-              </p>
-            </div>
-          ) : (
-            getContent(sheetOpen)
-          )}
+          {getContent(sheetOpen)}
         </IPhoneSheet>
       )}
 
@@ -195,22 +241,46 @@ const HomeMobile = () => {
           <div className="iphone-projects-grid">
             {projects.map((project, idx) => (
               <div key={idx} className="iphone-project-card">
-                <div
-                  className="iphone-project-card-image"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                />
-                <div className="iphone-project-card-info">
-                  <h3 className="iphone-project-card-title">{project.title}</h3>
+                <div className="iphone-project-card-hero">
+                  <ProjectArt id={project.art} />
+                  <div className="iphone-project-card-hero-shade" />
+                  {project.status && (
+                    <span
+                      className="iphone-project-card-status"
+                      style={{ ["--status-color" as string]: project.status.color }}
+                    >
+                      <span className="iphone-project-card-status-dot" />
+                      {project.status.label}
+                    </span>
+                  )}
+                  <div className="iphone-project-card-hero-text">
+                    <span className="iphone-project-card-subtitle">
+                      {project.subtitle}
+                    </span>
+                    <h3 className="iphone-project-card-title">
+                      {project.title}
+                    </h3>
+                  </div>
+                </div>
+                <div className="iphone-project-card-body">
                   <p className="iphone-project-card-desc">
                     {project.description}
                   </p>
+                  <div className="iphone-project-card-tags">
+                    {project.tags.map((t) => (
+                      <span key={t} className="iphone-project-card-tag">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="iphone-project-card-link"
                   >
-                    Ver projeto →
+                    Abrir projeto
+                    <span className="iphone-project-card-link-arrow">↗</span>
                   </a>
                 </div>
               </div>

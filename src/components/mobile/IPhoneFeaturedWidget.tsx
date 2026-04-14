@@ -1,27 +1,33 @@
 import { useState, useEffect } from "react";
-import img1 from "../../assets/project1.jpg";
-import img3 from "../../assets/project3.jpg";
-import img4 from "../../assets/project4.jpg";
+import ProjectArt, { type ProjectId } from "../shared/ProjectArt";
 import "./../../styles/mobile/IPhoneFeaturedWidget.css";
 
-const FEATURED_PROJECTS = [
+const FEATURED_PROJECTS: {
+  title: string;
+  subtitle: string;
+  art: ProjectId;
+  bgColor: string;
+}[] = [
+  {
+    title: "UpStat",
+    subtitle: "SaaS · Monitoramento · Em produção",
+    art: "upstat",
+    bgColor:
+      "linear-gradient(135deg, #064e3b 0%, #047857 60%, #0f766e 100%)",
+  },
+  {
+    title: "Pingoo",
+    subtitle: "Mensageria · React · Spring Boot",
+    art: "pingoo",
+    bgColor:
+      "linear-gradient(135deg, #15803d 0%, #16a34a 60%, #22c55e 100%)",
+  },
   {
     title: "Martins Adviser",
-    subtitle: "CRM · React · Laravel",
-    image: img1,
-    bgColor: "rgba(30, 58, 95, 0.85)",
-  },
-  {
-    title: "Dashdark X",
-    subtitle: "Dashboard · HTML · CSS · JS",
-    image: img3,
-    bgColor: "rgba(88, 28, 135, 0.85)",
-  },
-  {
-    title: "Windows Simulator",
-    subtitle: "Portfólio · React · i18n",
-    image: img4,
-    bgColor: "rgba(20, 83, 80, 0.85)",
+    subtitle: "CRM Multicanal · Laravel · AWS",
+    art: "martins",
+    bgColor:
+      "linear-gradient(135deg, #312e81 0%, #4f46e5 60%, #6366f1 100%)",
   },
 ];
 
@@ -46,31 +52,19 @@ const IPhoneFeaturedWidget = ({ onClick }: { onClick: () => void }) => {
         <div className="iphone-featured-top-wrap">
           <div
             className="iphone-featured-slider"
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {FEATURED_PROJECTS.map((project) => (
               <div key={project.title} className="iphone-featured-slide">
                 <div className="iphone-featured-top">
-                  <div
-                    className="iphone-featured-art"
-                    style={{ backgroundImage: `url(${project.image})` }}
-                  />
+                  <div className="iphone-featured-art">
+                    <ProjectArt id={project.art} />
+                  </div>
                   <div className="iphone-featured-info">
                     <h3 className="iphone-featured-title">{project.title}</h3>
                     <p className="iphone-featured-artist">{project.subtitle}</p>
-                    <div className="iphone-featured-controls">
-                      <button
-                        type="button"
-                        className="iphone-featured-play"
-                        aria-label="Reproduzir"
-                      >
-                        ▶
-                      </button>
-                      <span className="iphone-featured-devices">⎚</span>
-                    </div>
                   </div>
+                  <span className="iphone-featured-cta">Abrir ↗</span>
                 </div>
               </div>
             ))}
@@ -78,13 +72,19 @@ const IPhoneFeaturedWidget = ({ onClick }: { onClick: () => void }) => {
         </div>
         <div className="iphone-featured-divider" />
         <div className="iphone-featured-bottom">
-          {FEATURED_PROJECTS.map((project) => (
-            <div key={project.title} className="iphone-featured-item">
-              <div
-                className="iphone-featured-thumb"
-                style={{ backgroundImage: `url(${project.image})` }}
-              />
-              <span>{project.title}</span>
+          {FEATURED_PROJECTS.map((project, i) => (
+            <div
+              key={project.title}
+              className={`iphone-featured-item${
+                i === currentIndex ? " active" : ""
+              }`}
+            >
+              <div className="iphone-featured-thumb">
+                <ProjectArt id={project.art} />
+              </div>
+              <span className="iphone-featured-item-label">
+                {project.title}
+              </span>
             </div>
           ))}
         </div>

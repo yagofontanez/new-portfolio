@@ -1,16 +1,22 @@
 import "./../../styles/mobile/IPhoneFolderWidget.css";
 
+export interface FolderTile {
+  icon: React.ReactNode;
+  bg?: string;
+  color?: string;
+}
+
 interface IPhoneFolderWidgetProps {
   label: string;
   badge?: number;
-  icons: React.ReactNode[];
+  tiles: FolderTile[];
   onClick: () => void;
 }
 
 const IPhoneFolderWidget: React.FC<IPhoneFolderWidgetProps> = ({
   label,
   badge,
-  icons,
+  tiles,
   onClick,
 }) => {
   const formatBadge = (n: number) => {
@@ -22,9 +28,16 @@ const IPhoneFolderWidget: React.FC<IPhoneFolderWidgetProps> = ({
     <div className="iphone-folder-widget" onClick={onClick}>
       <div className="iphone-folder-widget-inner">
         <div className="iphone-folder-icons">
-          {icons.slice(0, 4).map((icon, i) => (
-            <div key={i} className="iphone-folder-icon">
-              {icon}
+          {tiles.slice(0, 4).map((tile, i) => (
+            <div
+              key={i}
+              className="iphone-folder-icon"
+              style={{
+                background: tile.bg ?? "rgba(255,255,255,0.12)",
+                color: tile.color ?? "#fff",
+              }}
+            >
+              {tile.icon}
             </div>
           ))}
         </div>
