@@ -1,5 +1,5 @@
 import Tooltip from "../common/Tooltip";
-import { FaTrashAlt, FaTerminal, FaSafari } from "react-icons/fa";
+import { FaTerminal, FaSafari } from "react-icons/fa";
 import linkedinImage from "./../../assets/linkedin.png";
 import githubImage from "./../../assets/github.png";
 import ProjectArt from "../shared/ProjectArt";
@@ -121,11 +121,6 @@ const AppsFooter = () => {
               }
               aria-label="GitHub"
             />
-          </Tooltip>
-          <Tooltip placement="top" title="Lixeira">
-            <div className="apps-footer-item dock-trash">
-              <FaTrashAlt />
-            </div>
           </Tooltip>
         </div>
       </div>

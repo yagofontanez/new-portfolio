@@ -123,12 +123,6 @@
   right: 12px;
 }
 
-.dock-trash {
-  background: linear-gradient(135deg, #d0d0d5 0%, #8a8a92 100%);
-  color: rgba(30, 30, 35, 0.85);
-  font-size: 22px;
-}
-
 .dock-terminal {
   background: linear-gradient(135deg, #2a2a2e 0%, #0c0c0e 100%);
   color: #6cf38b;

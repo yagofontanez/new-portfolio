@@ -103,49 +103,72 @@ const StatsWidget = () => {
     return { d7, d30 };
   }, [contribs]);
 
+  const showSkeleton = loading && !error;
+
   return (
-    <aside className="stats-widget" aria-label="Atividade no GitHub">
+    <aside
+      className={`stats-widget${showSkeleton ? " is-loading" : ""}`}
+      aria-label="Atividade no GitHub"
+      aria-busy={showSkeleton}
+    >
       <header className="stats-widget-head">
         <div className="stats-widget-avatar">
           {profile?.avatar_url ? (
             <img src={profile.avatar_url} alt="" loading="lazy" />
-          ) : (
+          ) : showSkeleton ? null : (
             <FaGithub />
           )}
         </div>
         <div className="stats-widget-head-text">
-          <span className="stats-widget-name">
-            {profile?.name ?? "Yago Fontanez"}
-          </span>
-          <a
-            href={`https://github.com/${USERNAME}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stats-widget-login"
-          >
-            @{USERNAME}
-          </a>
+          {showSkeleton ? (
+            <>
+              <span className="stats-widget-skeleton stats-widget-skeleton-name" />
+              <span className="stats-widget-skeleton stats-widget-skeleton-login" />
+            </>
+          ) : (
+            <>
+              <span className="stats-widget-name">
+                {profile?.name ?? "Yago Fontanez"}
+              </span>
+              <a
+                href={`https://github.com/${USERNAME}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stats-widget-login"
+              >
+                @{USERNAME}
+              </a>
+            </>
+          )}
         </div>
         <FaGithub className="stats-widget-mark" />
       </header>
 
       <div className="stats-widget-numbers">
         <div className="stats-widget-num">
-          <span className="stats-widget-num-value">
-            {loading ? "—" : totals.d7}
-          </span>
+          {showSkeleton ? (
+            <span className="stats-widget-skeleton stats-widget-skeleton-num" />
+          ) : (
+            <span className="stats-widget-num-value">{totals.d7}</span>
+          )}
           <span className="stats-widget-num-label">contrib · 7d</span>
         </div>
         <div className="stats-widget-num">
-          <span className="stats-widget-num-value">
-            {loading ? "—" : totals.d30}
-          </span>
+          {showSkeleton ? (
+            <span className="stats-widget-skeleton stats-widget-skeleton-num" />
+          ) : (
+            <span className="stats-widget-num-value">{totals.d30}</span>
+          )}
           <span className="stats-widget-num-label">contrib · 30d</span>
         </div>
         <div className="stats-widget-num">
-          <span className="stats-widget-num-value">
-            {loading ? "—" : profile?.public_repos ?? "—"}
-          </span>
+          {showSkeleton ? (
+            <span className="stats-widget-skeleton stats-widget-skeleton-num" />
+          ) : (
+            <span className="stats-widget-num-value">
+              {profile?.public_repos ?? "—"}
+            </span>
+          )}
           <span className="stats-widget-num-label">repos</span>
         </div>
       </div>
@@ -171,7 +194,9 @@ const StatsWidget = () => {
       <footer className="stats-widget-foot">
         {error
           ? "Dados indisponíveis (offline ou rate limit)"
-          : `últimas ${WEEKS} semanas · GitHub`}
+          : showSkeleton
+            ? "carregando dados do GitHub…"
+            : `últimas ${WEEKS} semanas · GitHub`}
       </footer>
     </aside>
   );
