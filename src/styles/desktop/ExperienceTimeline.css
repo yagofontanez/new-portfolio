@@ -1,0 +1,240 @@
+.exp-timeline {
+  padding: 4px 0 16px;
+  color: #1d1d1f;
+}
+
+.exp-timeline-head {
+  margin-bottom: 24px;
+}
+
+.exp-timeline-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6e6e73;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.exp-timeline-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 6px 0 4px;
+  color: #1d1d1f;
+}
+
+.exp-timeline-lead {
+  margin: 0;
+  color: #3c3c43;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  max-width: 560px;
+}
+
+.exp-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-timeline-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  position: relative;
+}
+
+.exp-timeline-rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.exp-timeline-rail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 113, 227, 0.6) 0%,
+    rgba(0, 113, 227, 0.25) 100%
+  );
+}
+
+.exp-timeline-item:first-child .exp-timeline-rail::before {
+  top: 26px;
+}
+
+.exp-timeline-item:last-child .exp-timeline-rail::before {
+  bottom: calc(100% - 26px);
+}
+
+.exp-timeline-dot {
+  position: relative;
+  margin-top: 18px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #0071e3;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.exp-timeline-item.is-current .exp-timeline-dot {
+  background: #0071e3;
+}
+
+@keyframes exp-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.exp-timeline-dot-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(0, 113, 227, 0.4);
+  animation: exp-pulse 1.8s ease-out infinite;
+}
+
+.exp-timeline-content {
+  padding: 0 0 22px 4px;
+}
+
+.exp-timeline-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.exp-timeline-head-row:hover {
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.4);
+  transform: translateY(-1px);
+}
+
+.exp-timeline-item.is-open .exp-timeline-head-row {
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.5);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.exp-timeline-head-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.exp-timeline-period {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0071e3;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.exp-timeline-role {
+  margin: 2px 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #1d1d1f;
+}
+
+.exp-timeline-company {
+  font-size: 0.85rem;
+  color: #6e6e73;
+}
+
+.exp-timeline-chevron {
+  color: #6e6e73;
+  font-size: 12px;
+  margin-top: 4px;
+  transition: transform 0.2s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.exp-timeline-item.is-open .exp-timeline-chevron {
+  transform: rotate(180deg);
+  color: #0071e3;
+}
+
+.exp-timeline-collapse {
+  max-height: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.5);
+  border-top: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  transition: max-height 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.exp-timeline-item.is-open .exp-timeline-collapse {
+  max-height: 600px;
+}
+
+.exp-timeline-achievements {
+  list-style: none;
+  margin: 0;
+  padding: 14px 18px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exp-timeline-achievements li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #3c3c43;
+}
+
+.exp-timeline-check {
+  color: #34c759;
+  font-size: 14px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.exp-timeline-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 18px 18px;
+}
+
+.exp-timeline-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 122, 255, 0.1);
+  color: #0062cc;
+}

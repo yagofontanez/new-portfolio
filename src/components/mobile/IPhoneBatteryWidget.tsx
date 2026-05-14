@@ -1,19 +1,9 @@
-import { useState, useEffect } from "react";
+import { useBatteryLevel } from "../../utils/useBatteryLevel";
 import "./../../styles/mobile/IPhoneBatteryWidget.css";
 
 const IPhoneBatteryWidget = () => {
-  const [battery, setBattery] = useState(28);
-
-  useEffect(() => {
-    if ("getBattery" in navigator) {
-      (navigator as Navigator & { getBattery: () => Promise<{ level: number }> })
-        .getBattery()
-        .then((bat) => {
-          setBattery(Math.round(bat.level * 100));
-        })
-        .catch(() => {});
-    }
-  }, []);
+  const { level } = useBatteryLevel(0.28);
+  const battery = Math.round(level * 100);
 
   const circumference = 2 * Math.PI * 42;
   const strokeDashoffset = circumference - (battery / 100) * circumference;

@@ -1,10 +1,19 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-import "antd/dist/reset.css";
+import { WindowsProvider } from "./state/windows/WindowsContext";
+import { SpotlightProvider } from "./state/spotlight/SpotlightContext";
+import { PreferencesProvider } from "./state/preferences/PreferencesContext";
+import "./styles/tokens.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <PreferencesProvider>
+      <WindowsProvider>
+        <SpotlightProvider>
+          <App />
+        </SpotlightProvider>
+      </WindowsProvider>
+    </PreferencesProvider>
   </StrictMode>
 );

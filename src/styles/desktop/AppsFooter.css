@@ -32,6 +32,9 @@
   width: 52px;
   height: 52px;
   border-radius: 14px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28),
     inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
@@ -42,6 +45,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  color: inherit;
+  font: inherit;
 }
 
 .apps-footer-item.dock-project {
@@ -122,4 +127,17 @@
   background: linear-gradient(135deg, #d0d0d5 0%, #8a8a92 100%);
   color: rgba(30, 30, 35, 0.85);
   font-size: 22px;
+}
+
+.dock-terminal {
+  background: linear-gradient(135deg, #2a2a2e 0%, #0c0c0e 100%);
+  color: #6cf38b;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.dock-safari {
+  background: radial-gradient(circle at 30% 30%, #77b9ff, #0a66c2 70%);
+  color: #ffffff;
+  font-size: 30px;
 }

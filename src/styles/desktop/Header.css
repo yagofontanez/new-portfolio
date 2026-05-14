@@ -39,6 +39,10 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.12s;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
 }
 
 .header-apple-wrap:hover {
@@ -74,6 +78,10 @@
   border-radius: 4px;
   transition: background 0.12s ease;
   font-size: 13px;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  letter-spacing: inherit;
 }
 
 .header-link:hover {
@@ -133,4 +141,26 @@
 
 .header-time {
   font-weight: 500;
+}
+
+@keyframes restart-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.restart-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 80px;
+  animation: restart-fade-in 0.4s ease forwards;
 }

@@ -1,23 +1,16 @@
 import { useEffect, useState } from "react";
 import { FaSignal, FaWifi, FaBatteryFull } from "react-icons/fa";
+import { useBatteryLevel } from "../../utils/useBatteryLevel";
 import "./../../styles/mobile/iPhoneStatusBar.css";
 
 const IPhoneStatusBar = () => {
   const [time, setTime] = useState(new Date());
-  const [battery, setBattery] = useState(28);
+  const { level } = useBatteryLevel(0.28);
+  const battery = Math.round(level * 100);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if ("getBattery" in navigator) {
-      (navigator as Navigator & { getBattery: () => Promise<{ level: number }> })
-        .getBattery()
-        .then((bat) => setBattery(Math.round(bat.level * 100)))
-        .catch(() => {});
-    }
   }, []);
 
   const formattedTime = time.toLocaleTimeString("pt-BR", {

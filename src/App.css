@@ -24,10 +24,9 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -2;
-    background: url("./assets/background-portfolio.jpg") no-repeat center center
-        fixed;
-    background-size: cover;
+    background: var(--wallpaper-bg, #111);
     transform: scale(1.02);
+    transition: background 0.35s ease;
 }
 
 body::after {

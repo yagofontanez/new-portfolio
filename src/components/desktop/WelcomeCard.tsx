@@ -9,7 +9,13 @@ const WelcomeCard: React.FC<WelcomeCardProps> = ({ onOpenNote }) => {
   return (
     <div className="welcome-card">
       <div className="welcome-avatar">
-        <span>YF</span>
+        <img
+          src="/assets/yago.jpg"
+          alt="Yago Henrique Fontanez"
+          className="welcome-avatar-img"
+          loading="eager"
+          draggable={false}
+        />
       </div>
       <div className="welcome-body">
         <span className="welcome-eyebrow">Olá, seja bem-vindo(a) 👋</span>

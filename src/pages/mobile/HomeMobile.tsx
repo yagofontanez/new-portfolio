@@ -25,58 +25,8 @@ import {
   FaSafari,
 } from "react-icons/fa";
 import { notesData } from "../../mock";
-import type { Project } from "../../interfaces/interfaces";
+import { PROJECTS } from "../../data/projects";
 import "./../../styles/mobile/HomeMobile.css";
-import "./../../styles/desktop/mock.css";
-
-type MobileProject = Project & {
-  subtitle: string;
-  tags: string[];
-  status?: { label: string; color: string };
-};
-
-const projects: MobileProject[] = [
-  {
-    title: "UpStat",
-    subtitle: "SaaS · Monitoramento de Uptime",
-    description:
-      "Desenvolvido do zero, em produção com usuários pagantes. Ecossistema com SDK npm, CLI em Go, Flutter SDK, MCP Server, Chrome Extension e AI Copilot. Pagamentos BR (Asaas + PIX) e CPF/CNPJ criptografado com AES-256-GCM.",
-    link: "https://upstat.online",
-    art: "upstat",
-    tags: ["Node.js", "React", "PostgreSQL", "Go", "Flutter"],
-    status: { label: "Em produção", color: "#22c55e" },
-  },
-  {
-    title: "Pingoo",
-    subtitle: "Mensageria WhatsApp",
-    description:
-      "Plataforma com UI glassmorphism e módulos de Templates, Integrações, Relatórios e Configurações. Pensada para gerenciar campanhas e fluxos de atendimento em escala.",
-    link: "https://github.com/yagofontanez/pingoo-backend",
-    art: "pingoo",
-    tags: ["React", "TypeScript", "Spring Boot", "Tailwind"],
-    status: { label: "Open Source", color: "#818cf8" },
-  },
-  {
-    title: "Martins Adviser",
-    subtitle: "CRM Multicanal",
-    description:
-      "CRM completo para gestão e automação de mensagens em e-mail, WhatsApp e SMS. Infraestrutura combinando AWS, Contabo e Railway. Twilio + Evolution API para envio programado.",
-    link: "https://martinsadviser.com/",
-    art: "martins",
-    tags: ["React", "Laravel", "Node.js", "AWS", "Twilio"],
-    status: { label: "Live", color: "#0ea5e9" },
-  },
-  {
-    title: "TCC · Benchmarking de Backends",
-    subtitle: "Pesquisa Acadêmica · ITE Bauru",
-    description:
-      "Pesquisa comparativa de performance entre Node.js, FastAPI e Laravel para mensageria automatizada via Twilio. Laravel liderou com 0,561s de latência média.",
-    link: "https://repositorios-tcc.netlify.app/",
-    art: "tcc",
-    tags: ["Node.js", "FastAPI", "Laravel", "Twilio"],
-    status: { label: "★ Nota máxima", color: "#fbbf24" },
-  },
-];
 
 const HomeMobile = () => {
   const [sheetOpen, setSheetOpen] = useState<string | null>(null);
@@ -166,8 +116,8 @@ const HomeMobile = () => {
               <div className="iphone-mini-grid">
                 <IPhoneFolderWidget
                   label="Projetos"
-                  badge={projects.length}
-                  tiles={projects.map((p) => ({
+                  badge={PROJECTS.length}
+                  tiles={PROJECTS.map((p) => ({
                     icon: <ProjectArt id={p.art} />,
                   }))}
                   onClick={() => openSheet("Projetos")}
@@ -239,7 +189,7 @@ const HomeMobile = () => {
       {sheetOpen === "Projetos" && (
         <IPhoneSheet title="Projetos" isOpen={true} onClose={closeSheet}>
           <div className="iphone-projects-grid">
-            {projects.map((project, idx) => (
+            {PROJECTS.map((project, idx) => (
               <div key={idx} className="iphone-project-card">
                 <div className="iphone-project-card-hero">
                   <ProjectArt id={project.art} />

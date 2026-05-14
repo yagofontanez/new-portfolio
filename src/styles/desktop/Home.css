@@ -32,12 +32,33 @@
   overflow: hidden;
 }
 
+.desktop-hero {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  z-index: 500;
+  max-width: 96vw;
+}
+
+@media (max-width: 1200px) {
+  .desktop-hero {
+    flex-direction: column;
+    align-items: center;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
 .project-modal-content {
   display: flex;
   gap: 28px;
   align-items: flex-start;
   padding: 4px;
-  color: #1d1d1f;
+  color: var(--text-primary);
 }
 
 .project-image {
@@ -54,8 +75,39 @@
 .project-info {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   flex: 1;
+  min-width: 0;
+}
+
+.project-info-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--c, #6e6e73);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c, #6e6e73) 15%, transparent);
+  white-space: nowrap;
+}
+
+.project-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c, #6e6e73);
 }
 
 .project-title {
@@ -63,7 +115,7 @@
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.02em;
-  color: #1d1d1f;
+  color: var(--text-primary);
 }
 
 .project-subtitle {
@@ -72,7 +124,7 @@
   gap: 6px;
   font-size: 0.78rem;
   font-weight: 500;
-  color: #6e6e73;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -80,7 +132,7 @@
 .project-description {
   font-size: 0.95rem;
   line-height: 1.55;
-  color: #3c3c43;
+  color: var(--text-secondary);
   margin: 0;
   white-space: pre-line;
 }
@@ -97,8 +149,8 @@
   font-weight: 500;
   padding: 3px 9px;
   border-radius: 999px;
-  background: rgba(0, 122, 255, 0.1);
-  color: #0062cc;
+  background: var(--chip-bg);
+  color: var(--chip-fg);
 }
 
 .project-link {

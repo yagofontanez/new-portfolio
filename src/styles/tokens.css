@@ -1,0 +1,78 @@
+:root {
+  --text-primary: #1d1d1f;
+  --text-secondary: #3c3c43;
+  --text-muted: #6e6e73;
+  --text-accent: #0071e3;
+
+  --surface-glass-bg: rgba(255, 255, 255, 0.72);
+  --surface-glass-border: rgba(255, 255, 255, 0.4);
+  --surface-glass-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  --window-bg: rgba(245, 245, 247, 0.94);
+  --window-content-bg: rgba(255, 255, 255, 0.65);
+  --window-border: rgba(0, 0, 0, 0.12);
+  --window-header-bg: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.78),
+    rgba(235, 235, 240, 0.62)
+  );
+
+  --chip-bg: rgba(0, 122, 255, 0.1);
+  --chip-fg: #0062cc;
+
+  --card-bg: #ffffff;
+  --card-border: #d2d2d7;
+  --card-divider: #e5e5e7;
+  --card-hover: #f5f5f7;
+}
+
+[data-theme="dark"] {
+  --text-primary: #f5f5f7;
+  --text-secondary: #c4c4c8;
+  --text-muted: #8a8a90;
+  --text-accent: #58a6ff;
+
+  --surface-glass-bg: rgba(28, 28, 32, 0.55);
+  --surface-glass-border: rgba(255, 255, 255, 0.12);
+  --surface-glass-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  --window-bg: rgba(36, 36, 40, 0.94);
+  --window-content-bg: rgba(28, 28, 32, 0.85);
+  --window-border: rgba(255, 255, 255, 0.1);
+  --window-header-bg: linear-gradient(
+    to bottom,
+    rgba(56, 56, 60, 0.85),
+    rgba(38, 38, 42, 0.85)
+  );
+
+  --chip-bg: rgba(88, 166, 255, 0.18);
+  --chip-fg: #82bcff;
+
+  --card-bg: #2c2c2e;
+  --card-border: rgba(255, 255, 255, 0.14);
+  --card-divider: rgba(255, 255, 255, 0.08);
+  --card-hover: rgba(255, 255, 255, 0.06);
+}
+
+/* App Notas mantém paleta clara mesmo em dark mode (igual macOS real,
+   onde o fundo amarelo do Notes nunca escurece). */
+[data-theme="dark"] .macos-note-content,
+[data-theme="dark"] .macos-note-sidebar {
+  --text-primary: #1d1d1f;
+  --text-secondary: #3c3c43;
+  --text-muted: #6e6e73;
+  --text-accent: #0071e3;
+  --chip-bg: rgba(0, 122, 255, 0.1);
+  --chip-fg: #0062cc;
+  --card-bg: #ffffff;
+  --card-border: #d2d2d7;
+  --card-divider: #e5e5e7;
+  --card-hover: #f5f5f7;
+  color: #1d1d1f;
+}
